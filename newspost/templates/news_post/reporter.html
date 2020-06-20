@@ -1,0 +1,67 @@
+{% extends 'news_post/base.html' %} 
+
+{% block content %}
+
+</br></br>
+<div class="text-center">
+	<h2>Registration</h2>
+</div></br>
+
+<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+
+	{{ form }}
+
+	<input class="btn btn-primary" type="submit" value="submit" />
+
+</form>
+<!-- 
+</br></br>
+<div class="text-center">
+	<h2>Registration</h2>
+</div></br>
+<form method="POST">
+	{% csrf_token %}
+	<div class="form-group">
+		<label for="id_fname">{{ form.fname.label }} </label>
+	{{form.fname}}
+  </div>
+	 <div class="form-group">
+    	<label for="id_lname">{{ form.lname.label }} </label>
+		{{form.lname}}
+  </div>
+	<div class="form-group">
+    	<label for="id_email">{{ form.email.label }} </label>
+    {{form.email}}
+  </div>
+
+	<div class="form-group">
+    	<label for="id_qualification">{{ form.qualification.label }} </label>
+    {{form.qualification}}
+  </div>
+	
+	<div class="form-group">
+    	<label for="id_image">{{ form.image.label }} </label>
+    {{form.image}}
+  </div>
+<div class="form-group">
+    	<label for="id_mob_number">{{ form.mob_number.label }} </label>
+    {{form.mob_number}}
+  </div>
+<div class="form-group">
+    	<label for="id_adhar_number">{{ form.adhar_number.label }} </label>
+    {{form.adhar_number}}
+  </div>
+	<div class="form-group">
+    	<label for="id_dob">{{ form.dob.label }} </label>
+    {{form.dob}}
+  </div>
+		<div class="form-group">
+    	<label for="id_address">{{ form.address.label }} </label>
+    {{form.address}}
+  </div>
+	
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>  -->
+
+{% endblock %}

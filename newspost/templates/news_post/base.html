@@ -1,0 +1,307 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Language" content="hi">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Big Chance News No.1 Online NEWS Portal</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+	<!-- Latest compiled and minified CSS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+		</script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+		</script>
+
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0" nonce="0pJOM6aa"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+<section id="ccr-nav-top" style="background-color:black;" class="fullwidth">
+        <div class="">
+            <div class="container">
+                <nav class="top-menu">
+
+                    <ul class="left-top-menu">
+                        <li><a href="index-2.html" style="color:#FFF;">Time</a></li>
+                        <!-- <li><a href="#">Site Map</a></li>
+                        <li><a href="contact.html">Contact</a></li> -->
+                    </ul><!-- /.left-top-menu -->
+
+                    <ul class="right-top-menu pull-right">
+                        <li><a href="{ url 'home' }" style="color:#FFF;">Home</a></li>
+                        <li><a href="#" style="color:#FFF;">Contact Us</a></li>
+                        <li><a href="{% url 'reporter-page' %}">Become a News Reporter</a></li>
+                        <li><a href="{% url 'reporter-ID' %}" style="color:#FFF;">Check ID Card</a></li>
+                        <li>
+
+                        </li>
+                    </ul> <!--  /.right-top-menu -->
+                </nav> <!-- /.top-menu -->
+            </div>
+        </div>    
+    </section> <!--  /#ccr-nav-top  -->
+
+	 <section id="ccr-site-title">
+        <div class="container" style="margin:0px; padding:0px; margin:auto; margin-top:10px;">
+            <div class="site-logo">
+                <a href="index.html" class="navbar-brand">
+                    <img src="{% static 'images/logo.png' %}" alt="Side Logo" />
+                      
+                </a>
+            </div> <!-- / .navbar-header -->
+
+            <div class="add-space">
+              <table width="100%" border="0">
+  <tr>
+    <td width="43%"><a href="#"><img src="{% static 'images/Become.gif' %}" width="321" height="86"></a></td>
+  </tr>
+</table>
+
+          </div> <!-- / .adspace -->
+
+        </div>    <!-- /.container -->
+    </section> <!-- / #ccr-site-title -->
+
+	 <section id="ccr-nav-main">
+        <nav class="main-menu">
+            <div class="container">
+
+                <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".ccr-nav-main">
+                            <i class="fa fa-bars"></i>
+                          </button> <!-- /.navbar-toggle -->
+                </div> <!-- / .navbar-header -->
+
+                <div class="collapse navbar-collapse ccr-nav-main">
+                    <ul class="nav navbar-nav">
+                        <li><a class="active" href="/"><img src="{% static 'img/home-md.png' %}" width="30" height="28"  /></a></li>
+                      
+          {% for cat in category %}
+
+                        <li><a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a> 
+                        
+                            <ul class="sub-menu">
+                    {% for subcat in cat.subcategories %}
+                              <li><a href="{{ subcat.get_absolute_url }}">{{ subcat.title }}</a>   </li>
+                    {% endfor %}    
+                            </ul>
+                     
+          {% endfor %}
+                                  
+                    </ul> <!-- /  .nav -->
+                </div><!-- /  .collapse .navbar-collapse  -->
+
+
+            </div>    <!-- /.container -->
+        </nav> <!-- /.main-menu -->
+    </section> <!-- / #ccr-nav-main -->
+
+</header> <!-- /#ccr-header -->
+<section id="ccr-main-section">
+	<div class="container">
+                
+		<section id="ccr-left-section" class="col-md-8">
+		  
+
+
+
+{% block content %}
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+<br>
+
+				
+				<section class="bottom-border">
+				</section> <!-- /#bottom-border -->
+
+
+	  </section><!-- /.col-md-8 / #ccr-left-section -->
+<aside id="ccr-right-section" class="col-md-4 ccr-home">
+
+<section id="sidebar-video-post">
+                <div class="ccr-gallery-ttile">
+                    <span></span> 
+                    <p><strong>विज्ञापन </strong></p>
+                </div> <!-- .ccr-gallery-ttile -->
+
+                <div class="sidebar-video">
+<marquee direction="left" onMouseOver="this.stop()" onMouseOut="this.start()">
+
+{% for advertise in advertisment %}
+	
+					<a href="{{ advertise.url }}" target="_blank"><img src="{{ advertise.image.url }}" style="height:100px; width:80px;"/></a>
+{% endfor %}
+
+</marquee>
+               
+                </div>
+               
+            </section>
+    
+ <section id="sidebar-video-post">
+                <div class="ccr-gallery-ttile">
+                    <span></span> 
+                    <p><strong>न्यूज़ 24x7 एक्सक्लूसिव वीडियो</strong></p>
+                </div> <!-- .ccr-gallery-ttile -->
+
+                <div class="sidebar-video">
+                <iframe width="340" height="195" src="{{ exclusive.url }}" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </section>
+    <!--==========================================-->        
+
+<section id="sidebar-popular-post">
+                <div class="ccr-gallery-ttile">
+                    <span></span> 
+                    <p><strong>लोकप्रिय खबरें </strong></p>
+                </div> <!-- .ccr-gallery-ttile -->
+                <ul>
+											{% if newslist.popular %}:
+                      {% for news in newslist.popular  %}
+                      <li>
+                          <a href="{{ news.get_absolute_url }}" title=" {{news.title}}"><img src="{{ news.thumbnail.url }}" alt=" {{news.title}}" > {{news.title}} </a>
+                                                
+                        <div class="date-like-comment">
+                            <span class="date"><time datetime="2014-02-17">{{ news.created }}</time></span>
+                            
+                        </div>
+                    </li>
+                  {% endfor %}    
+              {% endif %}  
+                </ul>
+
+            </section>
+        <!--==========================================-->    
+<!--            
+            <section id="ccr-sidebar-add-place">
+                <div class="sidebar-add-place">
+                    <table width="370" height="250" border="1">
+                    <tr>
+                                        <td width="179"><a href="galleryfe3c.html?albumid=6" title="AAj Ki Baat"><img src="gallery/1431855480.png" alt="AAj Ki Baat" width="176" height="122" /></a></td>
+                    <td width="179"><a href="galleryb626.html?albumid=5" title="Bihar Legislative Assembly"><img src="gallery/1431855252.jpg" alt="Bihar Legislative Assembly" width="176" height="122" /></a></td>
+</tr><tr>                    <td width="179"><a href="gallery0405.html?albumid=4" title="Sports"><img src="gallery/1429256413.jpg" alt="Sports" width="176" height="122" /></a></td>
+                    <td width="179"><a href="gallery0820.html?albumid=3" title="Internation"><img src="gallery/1429256391.png" alt="Internation" width="176" height="122" /></a></td>
+                  </tr>  </table>
+                </div> 
+            </section>
+            
+            <!--==========================================-->    
+           
+            <!-- <section id="ccr-sidebar-add-place">
+                <div class="sidebar-add-place">
+                                     <a href="#" title="Reports" target="_blank"><img src="banner/1429261356.png" alt="Reports" width="370" height="250" /></a>
+                </div> 
+            </section> -->
+     <!--==========================================-->       
+            <section id="ccr-sidebar-newslater">
+                
+              
+                
+            </section> 
+            <!--==========================================-->  
+            <section id="ccr-find-on-fb">
+                <div class="find-fb-title">
+                    <span><i class="fa fa-facebook"></i></span> Find us on Facebook
+                </div> <!-- /.find-fb-title -->
+                <div class="find-on-fb-body">
+										<div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>
+                    </div>
+
+                </div> <!-- /.find-on-fb-body -->
+            </section> </aside>
+<!-- / .col-md-4  / #ccr-right-section -->
+
+
+  </div><!-- /.container -->
+</section><!-- / #ccr-main-section -->
+
+<!-- /#ccr-footer-sidebar -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+  
+            <!--==========================================-->  
+           </aside>
+<!-- / .col-md-4  / #ccr-right-section -->
+
+
+  </div><!-- /.container -->
+</section><!-- / #ccr-main-section -->
+
+<!-- /#ccr-footer-sidebar -->
+
+
+ <footer id="ccr-footer">
+    <div class="container">
+         <div class="copyright">
+             <a href="index.html">&copy; Big Chance News</a></div> <!-- /.copyright -->
+
+		
+
+         <div class="footer-social-icons">
+             <ul>
+                 <li>
+                     <a href="#"  class="google-plus"><i class="fa fa-google-plus"></i></a>
+                 </li>
+                 <li >
+                     <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                 </li>
+                 <li >
+                     <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                 </li>
+                 <li >
+                     <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                 </li>
+             </ul>
+             
+         </div><!--  /.cocial-icons -->
+
+    </div> <!-- /.container -->
+</footer> <!-- /#ccr-footer -->
+
+
+	<script src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+
+</html>

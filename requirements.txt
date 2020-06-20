@@ -1,0 +1,4 @@
+django
+pillow
+django-summernote
+django-smart-selects

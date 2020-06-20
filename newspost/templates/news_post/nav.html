@@ -1,0 +1,65 @@
+{% for cat in category %}
+
+	<li> <a href="{{ cat.get_absolute_url }}" >  {{ cat.title }}  </a> </li>
+
+	{% for subcat in cat.subcategories %}
+		<ol> <a href="{{ subcat.get_absolute_url }} " >  {{ subcat.title }} </a> </ol>
+	{% endfor %}
+
+{% endfor %}
+<hr/>
+
+
+<section class='breaking-new' >
+
+	{% if newslist.breaking %}
+
+	{% for news in newslist.breaking %}
+		{{ news.title }}
+		{{ news.description|safe }}
+		<br>
+		<br>
+	{% endfor %}
+
+	{% else %}
+		there is no breaking news
+	{% endif %}
+
+</section />
+<hr/>
+
+<section class='chief-news' >
+
+	{% if newslist.chief %}
+
+	{% for news in newslist.chief %}
+		{{ news.title }}
+		{{ news.description|safe }}
+		<br>
+		<br>
+	{% endfor %}
+
+	{% else %}
+		there is no chief news
+	{% endif %}
+
+</section />
+<hr/>
+
+<section class='popular-news' >
+
+	{% if newslist.popular %}
+	
+	{% for news in newslist.popular %}
+		{{ news.title }}
+		{{ news.description|safe }}
+		<br>
+		<br>
+	{% endfor %}
+
+	{% else %}
+		there is no popular news
+	{% endif %}
+
+</section />
+<hr/>

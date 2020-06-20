@@ -1,0 +1,223 @@
+{% extends 'news_post/base.html' %}
+
+{% block content %}
+
+
+<div class="ccr-last-update">
+            <div class="update-ribon">Breaking News</div>
+            <!-- /.update-ribon -->
+            <span class="update-ribon-right"></span>
+            <!-- /.update-ribon-left -->
+            <div class="update-news-text" id="update-news-text">
+          
+				 <marquee   onmouseover="this.stop();" onmouseout="this.start();" scrollamount="4" direction="left" loop="true">
+             
+             <ul id="latestUpdate">
+                <li> 
+						{% for news in newslist.breaking  %}
+              			 	<B> &nbsp <a href="{{ news.get_absolute_url }}"> {{ news.title  }} &nbsp; &lArr;	 </a></B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						{% endfor %}
+                </li>
+				</ul>  
+               </marquee>
+            </div>
+            <!-- /.update-text -->
+            <div class="update-right-border"></div>
+            <!-- /.update-right-border -->
+          </div>
+         
+<!--- =============================================================== -->   
+          <section id="ccr-world-news">
+                    
+                    <section class="featured-world-news">
+                        <div class="featured-world-news-img">
+                        <section id="ccr-slide-main" class="carousel slide" data-ride="carousel">     
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+					{% for news in newslist.chief %}
+						{% if forloop.counter == 1 %}
+						<div class="item active">
+                            <div class="container slide-element">
+                                <img src="{{ news.thumbnail.url }}" alt="{{ news.title }} "  style="height:335px;">
+                                <p><a href="{{ news.get_absolute_url }} " title="{{ news.title }}">{{ news.title }} </a></p>
+                            </div> 
+                        </div> 
+						{% else %}
+						<div class="item ">
+                            <div class="container slide-element">
+                                <img src="{{ news.thumbnail.url }}" alt="{{ news.title }} "  style="height:335px;">
+                                <p><a href="{{ news.get_absolute_url }} " title="{{ news.title }}">{{ news.title }} </a></p>
+                            </div> 
+                        </div> 
+
+						{% endif %}
+					{% endfor %}
+
+                    </div> <!-- /.carousel-inner -->
+                    
+                    <!-- slider nav -->
+                    <a class="carousel-control left" href="#ccr-slide-main" data-slide="prev"><i class="fa fa-arrow-left"></i></a>
+                    <a class="carousel-control right" href="#ccr-slide-main" data-slide="next"><i class="fa fa-arrow-right"></i></a>
+            </section>
+                        </div>
+                        <div class="featured-world-news-post">
+                        <h5>प्रमुख खबरें</h5>
+          {% if newslist.chief %}
+              {% for news in newslist.chief %}
+                              <div class="thumbnail" style="margin-bottom:2px;">
+                                
+                        <font color="#FF0000">&rArr;&nbsp;</font><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></div>                     
+                {% endfor %}
+          {% endif %}  
+                        </div>
+              
+                    </section> <!-- /#featured-world-news -->
+                    </section>      
+<!--- =============================================================== -->
+ 
+<section id="ccr-world-news">
+<div class="ccr-gallery-ttile">
+                            <span></span> 
+                            <p>ख़बरें बिहार से<label style="float:right;"><a href="news-listingf2e4.html?catid=16&amp;cat_title=%e0%a5%99%e0%a4%ac%e0%a4%b0%e0%a5%87%e0%a4%82%20%e0%a4%ac%e0%a4%bf%e0%a4%b9%e0%a4%be%e0%a4%b0%20%e0%a4%b8%e0%a5%87" title=""">view all...</a>&nbsp;</label></p>
+                    </div> <!-- .ccr-gallery-ttile --><br/>
+                    <ul>
+                    
+                      <li>
+   {% if newslist.bihar %} 
+         {% for news in newslist.bihar %} 
+                {% if forloop.counter == 1 %}
+							
+                          <div class="ccr-thumbnails"> <img src="{{news.thumbnail.url}}">
+                            <p><a href="{{ news.get_absolute_url  }}" </a>{{ news.shortdescription }}</p>
+                          </div>
+                          
+                          <div style="width:360px; float:left;"> 
+                         <a href="news-detailsf257.html?nid=7044&amp;catid=16&amp;meta="  title=""> <b>{{ news.title }}</b></a>
+                          </div>
+                  {% endif %}
+          {% endfor %}     
+   {% endif %}
+
+                      </li>
+    {% if newslist.bihar %}  
+          {% for news in newslist.bihar %}      
+
+              {% if forloop.counter < 6 %}
+                         <div class="thumbnail" style=" float:right; width:380px; overflow:hidden; padding-bottom:5px; margin-bottom:2px;">
+                          <a href="{{ news.get_absolute_url  }}"><font color="#FF0000">&rArr;</font> {{ news.title }}</a>
+                          </div>
+              {% endif %}
+						
+             {% endfor %}
+     {% endif %}         
+                           </ul>
+                    </section>
+<section id="ccr-world-news">
+<div class="ccr-gallery-ttile">
+                            <span></span> 
+                            <p>राष्ट्रीय<label style="float:right;"><a href="news-listinga895.html?catid=18&amp;cat_title=%e0%a4%b0%e0%a4%be%e0%a4%b7%e0%a5%8d%e0%a4%9f%e0%a5%8d%e0%a4%b0%e0%a5%80%e0%a4%af" title=""">view all...</a>&nbsp;</label></p>
+                    </div> <!-- .ccr-gallery-ttile --><br/>
+                    <ul>
+                <li>
+					{% for news in national %}
+							{% if forloop.counter < 2 %}
+                          <div class="ccr-thumbnails"> <img src="{{ news.thumbnail.url }}" alt="" title="">
+                            <p><a href="{{ news.get_absolute_url }}" title="">Read More</a></p>
+                          </div>
+                          
+                          <div style="width:360px;"> 
+                         <a href="{{ news.get_absolute_url }}"> <b>{{ news.title }}</b></a>
+                          </div>
+								{% endif %}
+					{% endfor %}
+                  </li>
+              {% for news in national %}                          
+                         <div class="thumbnail" style=" float:right; width:380px; overflow:hidden; padding-bottom:5px; margin-bottom:2px;">
+                          <a href="{{ news.get_absolute_url }}" title=""><font color="#FF0000">&rArr;</font> {{ news.title }}</a>
+                          </div>
+                {% endfor %}
+                                            </ul>
+                    </section>
+          
+<section id="ccr-world-news">
+<div class="ccr-gallery-ttile">
+                            <span></span> 
+                            <p>खेल<label style="float:right;"><a href="news-listing4195.html?catid=13&amp;cat_title=%e0%a4%96%e0%a5%87%e0%a4%b2" title="">view all...</a>&nbsp;</label></p>
+                    </div> <!-- .ccr-gallery-ttile --><br/>
+                    <ul>
+                             <li>
+
+					{% for news in sports %}
+							{% if forloop.counter < 2 %}
+                          <div class="ccr-thumbnails"> <img src="{{ news.thumbnail.url }}" alt="" title="">
+                            <p><a href="{{ news.get_absolute_url }}" title="">Read More</a></p>
+                          </div>
+                          
+                          <div style="width:360px;"> 
+                         <a href="{{ news.get_absolute_url }}"> <b>{{ news.title }}</b></a>
+                          </div>
+								{% endif %}
+					{% endfor %}
+                  </li>
+                      
+                 {% for news in sports %}                          
+                         <div class="thumbnail" style=" float:right; width:380px; overflow:hidden; padding-bottom:5px; margin-bottom:2px;">
+                          <a href="{{ news.get_absolute_url }}" title=""><font color="#FF0000">&rArr;</font> {{ news.title }}</a>
+                          </div>
+                {% endfor %}
+                         
+                     </ul>
+             </section>
+          
+<section id="ccr-world-news">
+<div class="ccr-gallery-ttile">
+                            <span></span> 
+                            <p>मनोरंजन <label style="float:right;"><a href="news-listing3681.html?catid=10&amp;cat_title=%e0%a4%ae%e0%a4%a8%e0%a5%8b%e0%a4%b0%e0%a4%82%e0%a4%9c%e0%a4%a8" title=""">view all...</a>&nbsp;</label></p>
+                    </div> <!-- .ccr-gallery-ttile --><br/>
+                    <ul>
+               <li>
+        	{% for news in entertainment %}
+							{% if forloop.counter < 2 %}
+                          <div class="ccr-thumbnails"> <img src="{{ news.thumbnail.url }}" alt="" title="">
+                            <p><a href="{{ news.get_absolute_url }}" title="">Read More</a></p>
+                          </div>
+                          
+                          <div style="width:360px;"> 
+                         <a href="{{ news.get_absolute_url }}"> <b>{{ news.title }}</b></a>
+                          </div>
+								{% endif %}
+					{% endfor %}
+           </li>
+                    
+                 {% for news in entertainment %}                          
+                         <div class="thumbnail" style=" float:right; width:380px; overflow:hidden; padding-bottom:5px; margin-bottom:2px;">
+                          <a href="{{ news.get_absolute_url }}" title=""><font color="#FF0000">&rArr;</font> {{ news.title }}</a>
+                          </div>
+                {% endfor %}
+                       </ul>
+                    </section>
+
+          <!-- / #ccr-world-news -->
+      
+                          <section class="bottom-border"></section>
+<section id="ccr-latest-post-gallery">
+                    <div class="ccr-gallery-ttile">
+                        <span></span> 
+                        <p>Latest Video</p>
+                    </div><!-- .ccr-gallery-ttile -->
+                        <ul class="ccr-latest-post">
+										{% for vid in video %}			
+                          {% if forloop.counter < 4 %}
+                            <li>
+                                <div class="thumbnail">
+                                <iframe width="228" height="152" src="{{ vid.url }}" title="Gabber is Back" frameborder="0" allowfullscreen></iframe>
+                                  <!--<img src="img/thumbnail1.jpg" alt="Thumbnail 1" />
+                                  <p><a href="#postlink">Read More</a></p>-->
+                                </div>
+                                <h4><a href="{{ vid.url }}">{{vid.title}}</a></h4>
+                            </li>
+												{% endif %}
+                      {% endfor %}
+                 </ul> <!-- /.ccr-latest-post -->
+          </section> <!--  /#ccr-latest-post-gallery  -->
+{% endblock content %}

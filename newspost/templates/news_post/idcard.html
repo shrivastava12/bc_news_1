@@ -1,0 +1,63 @@
+{% extends 'news_post/base.html' %}
+{% block content %}
+{% load static %}
+</br></br>
+
+<div style="height=300px; background-color:#f5e7e6; padding:30px;">
+
+
+	<div class="container text-center">
+		<h4>Enter Your Employee Id</h4></br>
+		
+			<form class="form-inline" method="GET">
+			<div class="form-group mx-sm-3 mb-2">
+					<label for="emp_id" class="sr-only">Password</label>
+					<input type="text" name="emp_id" class="form-control" id="emp_id" placeholder="Enter Employee Id">
+			</div>
+				<button style="" type="submit" class="btn btn-primary ">Search</button>
+			</form>
+	</div>
+
+</div>
+</br>
+
+{% if emp %}
+<div class="row">
+	
+		<div class="col-lg-4" >
+	<div class="text-center">
+		<img class="img img-thumbnai" src="{{emp.image.url }}">
+		<small>{{ emp.emp_id }} </small>
+	</div>
+	</div>
+	<div class="col-lg-8">
+	<div class="card" style="width: ">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Name :{{ emp.fname }} {{ emp.lname }}</li>
+    <li class="list-group-item">Email Id: {{ emp.email }}</li>
+    <li class="list-group-item">Mob No: 7479530699</li>
+		<li class="list-group-item">Designation: {{ emp.designation }}</li>
+  </ul>
+	</div>
+</div>
+</div>
+
+{% else %}
+<div class="row">
+	<div class="col ">
+		{% if msg %}
+		<h4 class='text-center'> {{ msg }} </h4>
+		{% else %}
+		<h4 class='text-center'> Please enter Employee Id <i class="fa fa-arrow-up"></i> </h4>
+		{% endif %}
+	</div>
+</div>
+
+{% endif %}
+
+
+
+
+
+
+{% endblock %}

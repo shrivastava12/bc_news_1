@@ -1,0 +1,30 @@
+{% extends 'news_post/base.html' %}
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<div class="list-group">
+{% if Articles %}
+	{% for news in Articles %}
+	
+  <a href="{{ news.get_absolute_url }}" class="list-group-item list-group-item-action flex-column align-items-start ">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{ news.title }} </h5>
+      <small>{{ news.created }}</small>
+    </div></br>
+		<img class="card-img-top" height=200 src="{{ news.thumbnail.url }}" alt="Card image cap"></br></br>
+    <p class="mb-1">{{ news.shortdescription }} </p>
+  </a>
+
+	{% endfor  %}
+
+{% else %}
+	<p> there is no list </p>
+{% endif %} 
+
+</div>
+{% endblock content %}
+
+
